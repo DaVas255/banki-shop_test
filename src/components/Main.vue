@@ -1,10 +1,58 @@
-<script lang="ts"></script>
+<script lang="ts">
+import Card from './Card.vue'
+
+const cards = [
+  {
+    img: '/public/1.png',
+    title: '«Рождение Венеры» Сандро Боттичелли',
+    oldPrice: '2 000 000',
+    newPrice: '1 000 000',
+  },
+  {
+    img: '/public/2.png',
+    title: '«Тайная вечеря»  Леонардо да Винчи',
+    newPrice: '3 000 000',
+  },
+  {
+    img: '/public/3.png',
+    title: '«Сотворение Адама» Микеланджело',
+    oldPrice: '6 000 000',
+    newPrice: '5 000 000',
+  },
+  {
+    img: '/public/4.png',
+    title: '«Урок анатомии»  Рембрандт',
+    sealed: true,
+  },
+]
+
+export default {
+  components: {
+    Card,
+  },
+  data() {
+    return {
+      cards,
+    }
+  },
+}
+</script>
 
 <template>
   <main class="main">
     <div class="container">
       <h1 class="main__title">Картины эпохи Возрождения</h1>
-      <div class="main__cards"></div>
+      <div class="main__cards">
+        <Card
+          v-for="card in cards"
+          :key="card.title"
+          :img="card.img"
+          :title="card.title"
+          :oldPrice="card.oldPrice"
+          :newPrice="card.newPrice"
+          :sealed="card.sealed"
+        />
+      </div>
     </div>
   </main>
 </template>
@@ -21,6 +69,12 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 36px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
   }
 }
 </style>

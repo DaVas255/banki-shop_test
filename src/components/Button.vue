@@ -15,11 +15,11 @@ export default {
 </script>
 
 <template>
-  <button class="button" v-if="text != 'Найти'">
+  <button class="button" v-if="text == 'В корзине'">
     <Svg type="ok" />
     {{ text }}
   </button>
-  <button class="button" v-if="text == 'Найти'">{{ text }}</button>
+  <button class="button" v-if="text != 'В корзине'">{{ text }}</button>
 </template>
 
 <style scoped lang="scss">
