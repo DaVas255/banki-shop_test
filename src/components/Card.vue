@@ -42,7 +42,7 @@ export default {
           <div class="card__new-price" v-if="newPrice != null">{{ newPrice }} $</div>
         </div>
         <div v-if="sealed != true">
-          <Button text="Купить" />
+          <Button :text="'Купить'" :itemId="title" />
         </div>
       </div>
       <div v-if="sealed" class="card__sealed">Продана на аукционе</div>

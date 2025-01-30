@@ -26,7 +26,7 @@ export default {
       class="search__input"
       v-model="searchQuery"
     />
-    <Button text="Найти" @click="handleSearch" />
+    <Button text="Найти" @click="handleSearch" itemId="search" />
   </div>
 </template>
 

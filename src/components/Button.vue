@@ -10,6 +10,10 @@ export default {
       type: String,
       required: true,
     },
+    itemId: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -19,14 +23,29 @@ export default {
   },
   methods: {
     handleClick() {
-      if (this.text === 'Купить' && !this.isLoading && !this.isInCart) {
-        this.isLoading = true
-        setTimeout(() => {
-          this.isLoading = false
-          this.isInCart = true
-        }, 2000)
+      if (this.text === 'Купить') {
+        if (!this.isInCart) {
+          this.isLoading = true
+          setTimeout(() => {
+            this.isLoading = false
+            this.isInCart = true
+            this.saveToLocalStorage()
+          }, 2000)
+        } else {
+          this.isInCart = false
+          this.saveToLocalStorage()
+        }
       }
     },
+    saveToLocalStorage() {
+      localStorage.setItem(`cartState_${this.itemId}`, JSON.stringify(this.isInCart))
+    },
+  },
+  mounted() {
+    const savedState = localStorage.getItem(`cartState_${this.itemId}`)
+    if (savedState) {
+      this.isInCart = JSON.parse(savedState)
+    }
   },
 }
 </script>
