@@ -1,7 +1,7 @@
 <script lang="ts">
 import Card from './Card.vue'
 
-const cards = [
+const initialCards = [
   {
     img: '/1.png',
     title: '«Рождение Венеры» Сандро Боттичелли',
@@ -32,8 +32,24 @@ export default {
   },
   data() {
     return {
-      cards,
+      cards: initialCards,
+      searchQuery: '',
     }
+  },
+  computed: {
+    filteredCards() {
+      if (!this.searchQuery) {
+        return this.cards
+      }
+      return this.cards.filter(card =>
+        card.title.toLowerCase().includes(this.searchQuery.toLowerCase()),
+      )
+    },
+  },
+  methods: {
+    handleSearch(query: string) {
+      this.searchQuery = query
+    },
   },
 }
 </script>
@@ -44,7 +60,7 @@ export default {
       <h1 class="main__title">Картины эпохи Возрождения</h1>
       <div class="main__cards">
         <Card
-          v-for="card in cards"
+          v-for="card in filteredCards"
           :key="card.title"
           :img="card.img"
           :title="card.title"

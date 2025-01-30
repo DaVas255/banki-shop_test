@@ -5,13 +5,28 @@ export default {
   components: {
     Button,
   },
+  data() {
+    return {
+      searchQuery: '',
+    }
+  },
+  methods: {
+    handleSearch() {
+      this.$emit('search', this.searchQuery)
+    },
+  },
 }
 </script>
 
 <template>
   <div class="search">
-    <input type="text" placeholder="Поиск по названию картины" class="search__input" />
-    <Button text="Найти" />
+    <input
+      type="text"
+      placeholder="Поиск по названию картины"
+      class="search__input"
+      v-model="searchQuery"
+    />
+    <Button text="Найти" @click="handleSearch" />
   </div>
 </template>
 

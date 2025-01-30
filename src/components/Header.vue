@@ -7,6 +7,11 @@ export default {
     Nav,
     Search,
   },
+  methods: {
+    handleSearch(query: string) {
+      this.$emit('search', query)
+    },
+  },
 }
 </script>
 
@@ -14,7 +19,7 @@ export default {
   <header class="header">
     <div class="container">
       <Nav />
-      <Search />
+      <Search @search="handleSearch" />
     </div>
   </header>
 </template>

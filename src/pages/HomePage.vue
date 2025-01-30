@@ -9,13 +9,18 @@ export default {
     Footer,
     Main,
   },
+  methods: {
+    handleSearch(query: string) {
+      this.$refs.main.handleSearch(query)
+    },
+  },
 }
 </script>
 
 <template>
   <div class="wrapper">
-    <Header />
-    <Main />
+    <Header @search="handleSearch" />
+    <Main ref="main" />
     <Footer />
   </div>
 </template>
