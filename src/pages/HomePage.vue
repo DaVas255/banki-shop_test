@@ -1,9 +1,10 @@
 <script lang="ts">
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
-import Main from '@/components/Main.vue'
+import { defineComponent } from 'vue'
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+import Main from '../components/Main.vue'
 
-export default {
+export default defineComponent({
   components: {
     Header,
     Footer,
@@ -11,10 +12,11 @@ export default {
   },
   methods: {
     handleSearch(query: string) {
-      this.$refs.main.handleSearch(query)
+      // 使用类型断言来指定 this.$refs.main 的类型
+      ;(this.$refs.main as typeof Main).handleSearch(query)
     },
   },
-}
+})
 </script>
 
 <template>

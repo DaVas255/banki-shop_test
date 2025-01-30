@@ -1,6 +1,6 @@
 <script lang="ts">
-import Nav from '@/components/Nav.vue'
-import Search from '@/components/Search.vue'
+import Nav from './Nav.vue'
+import Search from './Search.vue'
 
 export default {
   components: {
