@@ -11,15 +11,37 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isLoading: false,
+      isInCart: false,
+    }
+  },
+  methods: {
+    handleClick() {
+      if (this.text === 'Купить' && !this.isLoading && !this.isInCart) {
+        this.isLoading = true
+        setTimeout(() => {
+          this.isLoading = false
+          this.isInCart = true
+        }, 2000)
+      }
+    },
+  },
 }
 </script>
 
 <template>
-  <button class="button" v-if="text == 'В корзине'">
-    <Svg type="ok" />
-    {{ text }}
+  <button
+    class="button"
+    :disabled="isLoading"
+    @click="handleClick"
+    :class="{ button__done: isInCart, button__loading: isLoading }"
+  >
+    <Svg v-if="isLoading" type="loading" />
+    <Svg v-else-if="isInCart" type="ok" />
+    {{ isLoading ? 'Обрабатывается' : isInCart ? 'В корзине' : text }}
   </button>
-  <button class="button" v-if="text != 'В корзине'">{{ text }}</button>
 </template>
 
 <style scoped lang="scss">
@@ -34,6 +56,15 @@ export default {
 
   color: #f4f6f9;
   font-weight: 700;
+
+  &__done {
+    padding: 14px 12px;
+  }
+
+  &__loading {
+    font-size: 12px;
+    padding: 14px 6px;
+  }
 
   &:hover {
     background-color: #776763;
