@@ -7,21 +7,29 @@ const initialCards = [
     title: '«Рождение Венеры» Сандро Боттичелли',
     oldPrice: '2 000 000',
     newPrice: '1 000 000',
+    desc: 'Описание 1',
+    images: ['/1.png', '/2.png', '/3.png', '/4.png'],
   },
   {
     img: '/2.png',
     title: '«Тайная вечеря»  Леонардо да Винчи',
     newPrice: '3 000 000',
+    desc: 'Описание 1',
+    images: ['/1.png', '/2.png', '/3.png', '/4.png'],
   },
   {
     img: '/3.png',
     title: '«Сотворение Адама» Микеланджело',
     oldPrice: '6 000 000',
     newPrice: '5 000 000',
+    desc: 'Описание 1',
+    images: ['/1.png', '/2.png', '/3.png', '/4.png'],
   },
   {
     img: '/4.png',
     title: '«Урок анатомии»  Рембрандт',
+    desc: 'Описание 1',
+    images: ['/1.png', '/2.png', '/3.png', '/4.png'],
     sealed: true,
   },
 ]
@@ -67,6 +75,8 @@ export default {
           :oldPrice="card.oldPrice"
           :newPrice="card.newPrice"
           :sealed="card.sealed"
+          :description="card.desc"
+          :images="card.images"
         />
       </div>
     </div>
