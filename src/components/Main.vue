@@ -3,24 +3,24 @@ import Card from './Card.vue'
 
 const cards = [
   {
-    img: '/public/1.png',
+    img: '/1.png',
     title: '«Рождение Венеры» Сандро Боттичелли',
     oldPrice: '2 000 000',
     newPrice: '1 000 000',
   },
   {
-    img: '/public/2.png',
+    img: '/2.png',
     title: '«Тайная вечеря»  Леонардо да Винчи',
     newPrice: '3 000 000',
   },
   {
-    img: '/public/3.png',
+    img: '/3.png',
     title: '«Сотворение Адама» Микеланджело',
     oldPrice: '6 000 000',
     newPrice: '5 000 000',
   },
   {
-    img: '/public/4.png',
+    img: '/4.png',
     title: '«Урок анатомии»  Рембрандт',
     sealed: true,
   },
@@ -75,6 +75,18 @@ export default {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
+
+    @media screen and (max-width: 580px) {
+      column-gap: 0;
+      justify-content: center;
+    }
+  }
+
+  .container {
+    margin-bottom: 20px;
+    @media screen and (max-width: 1260px) {
+      padding: 0 10px;
+    }
   }
 }
 </style>

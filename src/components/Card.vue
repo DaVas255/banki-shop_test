@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :class="{ 'card--sealed': sealed }">
     <img :src="img" alt="Photo" />
     <div class="card__info">
       <h3 class="card__title">{{ title }}</h3>
@@ -44,8 +44,8 @@ export default {
         <div v-if="sealed != true">
           <Button text="Купить" />
         </div>
-        <div v-if="sealed" class="card__sealed">Продана на аукционе</div>
       </div>
+      <div v-if="sealed" class="card__sealed">Продана на аукционе</div>
     </div>
   </div>
 </template>
@@ -86,9 +86,14 @@ export default {
   }
 
   &__sealed {
+    margin-top: 14px;
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
+  }
+
+  &--sealed {
+    opacity: 0.5;
   }
 }
 </style>

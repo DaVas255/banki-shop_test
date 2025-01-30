@@ -21,8 +21,16 @@ export default {
 
 <style scoped lang="scss">
 .header {
-  padding: 24px 0 24px 96px;
+  padding: 24px 0;
   border: 1px solid #e1e1e1;
+
+  nav {
+    margin-left: 96px;
+
+    @media screen and (max-width: 1350px) {
+      margin-left: 0px;
+    }
+  }
 
   @media screen and (max-width: 1350px) {
     padding: 24px 20px;
